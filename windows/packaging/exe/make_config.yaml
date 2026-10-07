@@ -3,7 +3,7 @@ publisher: Atlas VPN
 publisher_url: https://buy.vannp.com
 display_name: Atlas VPN
 create_desktop_icon: true
-install_dir_name: "{autopf64}\Atlas VPN"
+install_dir_name: '{autopf64}\Atlas VPN'
 setup_icon_file: windows\runner\resources\app_icon.ico
 locales:
   - ar
