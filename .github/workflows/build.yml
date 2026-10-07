@@ -25,9 +25,9 @@ env:
   # TARGET_NAME_rpm: "Hiddify-rpm-x64"
   TARGET_NAME_apk: "Hiddify-Android"
   TARGET_NAME_aab: "Hiddify-Android"
-  TARGET_NAME_exe: "Hiddify-Windows-Setup-x64"
-  TARGET_NAME_msix: "Hiddify-Windows-x64"
-  TARGET_NAME_zip: "Hiddify-Windows-Portable-x64"
+  TARGET_NAME_exe: "Atlas-VPN-Windows-Setup"
+  TARGET_NAME_msix: "Atlas-VPN-Windows-x64"
+  TARGET_NAME_zip: "Atlas-VPN-Windows-Portable"
   TARGET_NAME_dmg: "Hiddify-MacOS"
   TARGET_NAME_pkg: "Hiddify-MacOS-Installer"
   TARGET_NAME_ipa: "Hiddify-iOS"
@@ -74,10 +74,10 @@ jobs:
           #   os: ubuntu-latest
           #   targets: aab
 
-          # - platform: windows
-          #   os: windows-latest
-          #   aarch: amd64
-          #   targets: exe,msix,zip
+          - platform: windows
+            os: windows-latest
+            aarch: amd64
+            targets: exe,zip
 
           # - platform: linux
           #   os: ubuntu-22.04
@@ -238,6 +238,7 @@ jobs:
           echo "keyAlias=${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}" >> android/key.properties
 
       - name: Setup Windows Signing Properties
+        continue-on-error: true
         if: ${{ inputs.upload-artifact && startsWith(matrix.platform,'windows') }}
         run: |
             [IO.File]::WriteAllBytes("windows\sign.pfx", [Convert]::FromBase64String("${{ secrets.WINDOWS_SIGNING_KEY }}"))
@@ -266,6 +267,7 @@ jobs:
           make ${{ matrix.platform }}-release
 
       - name: Code Sign
+        continue-on-error: true
         if: ${{ inputs.upload-artifact && startsWith(matrix.platform,'windows') }}
         uses: hiddify/signtool-code-sign-sha256@main
         with:
