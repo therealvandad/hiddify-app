@@ -1,0 +1,34 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="2048"
+    android:viewportHeight="2048">
+  <!-- Atlas VPN mark: shield + signal waves, centered in the adaptive safe zone.
+       Authored in 0..64 logo space, scaled x20 and translated to center (1024,1024). -->
+  <group android:scaleX="20"
+      android:scaleY="20"
+      android:translateX="384"
+      android:translateY="384">
+    <!-- shield -->
+    <path
+        android:pathData="M32,5 L54,14 L54,33 C54,46 44,54 32,59 C20,54 10,46 10,33 L10,14 Z"
+        android:fillColor="#FFFFFFFF"/>
+    <!-- outer signal wave (faint) -->
+    <path
+        android:pathData="M20,33 A17,17 0 0 1 44,33"
+        android:strokeColor="#6C4CFF"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:strokeAlpha="0.55"/>
+    <!-- inner signal wave -->
+    <path
+        android:pathData="M25.5,39 A9,9 0 0 1 38.5,39"
+        android:strokeColor="#6C4CFF"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"/>
+    <!-- source dot -->
+    <path
+        android:pathData="M28.9,44.5 a3.1,3.1 0 1,0 6.2,0 a3.1,3.1 0 1,0 -6.2,0"
+        android:fillColor="#6C4CFF"/>
+  </group>
+</vector>
